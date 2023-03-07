@@ -3,10 +3,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-include ':sample-app', ':sample-app-compose', ':livekit-android-sdk'
+include ':livekit-android-sdk'
 rootProject.name='livekit-android'
-include ':sample-app-common'
 include ':livekit-lint'
-include ':video-encode-decode-test'
+//include ':video-encode-decode-test'
 include ':sample-app-basic'
-include ':sample-app-record-local'
+//include ':sample-app-record-local'
