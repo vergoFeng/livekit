@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion androidSdk.compileVersion
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "io.livekit.android"
+        minSdkVersion androidSdk.minVersion
+        targetSdkVersion androidSdk.targetVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility java_version
+        targetCompatibility java_version
+    }
+    kotlinOptions {
+        jvmTarget = java_version
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    // Sample-app-common contains the livekit-android-sdk dependency and others
+    // as well as classes common to both sample apps.
+    implementation project(":sample-app-common")
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.coroutines.lib
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation "androidx.core:core-ktx:${versions.androidx_core}"
+    implementation "androidx.activity:activity-ktx:1.5.1"
+    implementation 'androidx.fragment:fragment-ktx:1.5.1'
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${versions.androidx_lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx_lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${versions.androidx_lifecycle}"
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation "com.github.lisawray.groupie:groupie:${versions.groupie}"
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:${versions.groupie}"
+    implementation deps.timber
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
